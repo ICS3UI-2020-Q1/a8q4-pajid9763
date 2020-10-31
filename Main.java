@@ -51,9 +51,12 @@ public class Main implements Runnable, ActionListener{
     nInput = new JTextField();
     facInput = new JTextField();
 
+    // disable the factorial text field so the user cannot type in it 
+    facInput.setEnabled(false);
+
     // set the location and size of the JTextFields
     nInput.setBounds(60, 30, 80, 20);
-    facInput.setBounds(235, 30, 100, 20);
+    facInput.setBounds(235, 30, 150, 20);
 
     // add the text fields to the main panel 
     mainPanel.add(nInput);
@@ -70,13 +73,11 @@ public class Main implements Runnable, ActionListener{
     calcButton.setActionCommand("calc");
 
     // set the location and size of the button 
-    calcButton.setBounds(340, 30, 70, 20);
+    calcButton.setBounds(390, 30, 70, 20);
 
     // add button to the mainPanel 
     mainPanel.add(calcButton);
  
-    
-
   }
 
   // method called when a button is pressed
@@ -84,16 +85,24 @@ public class Main implements Runnable, ActionListener{
     // get the command from the action
     String command = e.getActionCommand();
 
+    // create a total variable to keep track of the total
     int total = 1;
-    String nInputText = nInput.getText;
+    // get text from the number the user inputted
+    String nInputText = nInput.getText();
+    // convert that text into a double
     double nInputNum = Double.parseDouble(nInputText);
 
+    // calculate the sum of the factorial
     for (int i = 1; i <= nInputNum; i++){
       total = total * i;
-      String totalFinal = String.valueOf(total);
+      
     }
+      // convert the double to a String so it can be displayed on screen
+      String totalFinal = String.valueOf(total);
+      facInput.setText(totalFinal);
   }
-    facInput.setText(totalFinal);
+
+    
 
   // Main method to start our program
   public static void main(String[] args){
